@@ -19,10 +19,15 @@ export const QuestionProvider=({children})=>{
   const handlePlayerAnswer = (answer) => {
     setPlayerAnswers((prevAnswers) => [...prevAnswers, answer]);
   };
+  const resetData=()=>{
+    setQuestionNumber(1);
+    setQuestionCorrect(0);
+    setPlayerAnswers([]);
+  }
   useEffect(()=>{
     const fetchData = async()=>{
       try {
-        const response = await axios.get(' https://opentdb.com/api.php?amount=10&difficulty=hard&type=boolean')
+        const response = await axios.get(' https://opentdb.com/api.php?amount=12&difficulty=hard&type=boolean')
         setData(response.data);
       } catch (error) {
         console.log(error)
@@ -30,5 +35,5 @@ export const QuestionProvider=({children})=>{
     };
     fetchData()
   },[])
-  return<QuestionContext.Provider value={{data,questionCorrect,questionNumber,incrementQuestionNumber,incrementCorrectAnswers,handlePlayerAnswer,playerAnswers}}>{children} </QuestionContext.Provider>
+  return<QuestionContext.Provider value={{data,questionCorrect,questionNumber,incrementQuestionNumber,incrementCorrectAnswers,handlePlayerAnswer,playerAnswers,resetData}}>{children} </QuestionContext.Provider>
 }

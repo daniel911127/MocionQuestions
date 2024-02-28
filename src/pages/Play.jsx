@@ -23,7 +23,7 @@ export const Play = () => {
     if (res === respuesta) {
       incrementCorrectAnswers();
     }
-    if (questionNumber < 10) {
+    if (questionNumber < 12) {
       incrementQuestionNumber();
     }
   };
@@ -52,8 +52,8 @@ export const Play = () => {
               FALSE
             </button>
           </div>
-          <p>{questionNumber}/10</p>
-          {count === 10 && (
+          <p>{questionNumber}/12</p>
+          {count === 12 && (
             <p>
               <Link className='results'to='/results'>Check your score!!</Link>
             </p>

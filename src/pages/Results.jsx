@@ -8,7 +8,8 @@ export const Results = () => {
     data,
     questionNumber,
     questionCorrect,
-    playerAnswers
+    playerAnswers,
+    resetData,
   } = useContext(QuestionContext);
   console.log(playerAnswers)
   const answers = data.results.map((question, index) => ({
@@ -17,6 +18,9 @@ export const Results = () => {
     userAnswer: playerAnswers[index], 
     isCorrect: playerAnswers[index] === question.correct_answer 
   }));
+  const handlePlayAgain=( )=>{
+    resetData()
+  } 
   return (
     <div className='container-results'>
       <div className='container-score'>
@@ -32,7 +36,7 @@ export const Results = () => {
             </li>
           ))}
         </ul>
-        <Link to='/'>Play Again</Link>
+        <Link className='again' to='/' onClick={handlePlayAgain}>Play Again</Link>
       </div>
     </div>
   )
